@@ -15,7 +15,7 @@ function Home() {
   return (
     <div className="space-y-12 sm:space-y-16">
       <section className="px-4 sm:px-6 md:px-20 pb-12 sm:pb-20">
-        <div className="relative mb-6 sm:mb-8 h-[90vh] overflow-hidden bg-[#e4f7f4]">
+        <div className="relative mb-0 h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] overflow-hidden bg-[#e4f7f4] -mx-4 sm:-mx-6 md:-mx-20">
           <img
             src={heroImage ?? featureTiles[2]?.url}
             alt={featureTiles[2]?.label || 'Featured project'}
