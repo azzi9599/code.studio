@@ -20,7 +20,9 @@ function Home() {
             src={heroImage ?? featureTiles[2]?.url}
             alt={featureTiles[2]?.label || 'Featured project'}
             className="h-full w-full object-cover"
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <h1 className="px-4 text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light uppercase tracking-[0.3em] text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)]">
@@ -28,7 +30,7 @@ function Home() {
             </h1>
           </div>
         </div>
-        <div className="grid gap-2 sm:gap-3 bg-white p-2 sm:p-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4">
+        <div className="grid gap-2 sm:gap-3 bg-white p-2 sm:p-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4 cv-auto">
           {featureTiles.map((tile) => (
             <Link
               key={tile.id}
@@ -40,6 +42,8 @@ function Home() {
                 alt={tile.label}
                 className="h-full w-full object-cover transition duration-700 ease-out"
                 loading="lazy"
+                fetchPriority="low"
+                decoding="async"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0f2c2a]/90 to-transparent px-2 py-2 sm:px-4 sm:py-3 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
                 <span className="text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white">
