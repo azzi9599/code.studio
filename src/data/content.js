@@ -4,8 +4,6 @@ export const heroStats = [
   { label: 'Global design awards', value: '08' },
 ];
 
-const MAX_IMAGES_PER_CATEGORY = 6;
-
 const slugify = (value) =>
   value
     .toLowerCase()
@@ -31,14 +29,32 @@ const getAdditionalImages = (entries, index, count = 3) => {
   return images;
 };
 
+const shuffleEntries = (entries) => {
+  const shuffled = [...entries];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 const homesEntries = getImageEntriesFromGlob(
   import.meta.glob('/Homes/**/*.{jpg,jpeg,png,webp}', { eager: true, as: 'url' }),
 );
 const hospitalityEntries = getImageEntriesFromGlob(
   import.meta.glob('/Hospitality/**/*.{jpg,jpeg,png,webp}', { eager: true, as: 'url' }),
 );
-const workplacesEntries = getImageEntriesFromGlob(
-  import.meta.glob('/Workplaces & Retail/**/*.{jpg,jpeg,png,webp}', { eager: true, as: 'url' }),
+const workplacesOfficeEntries = getImageEntriesFromGlob(
+  import.meta.glob('/Workplaces & Retail/Office @ 43/**/*.{jpg,jpeg,png,webp}', { eager: true, as: 'url' }),
+);
+const workplacesShivamEntries = getImageEntriesFromGlob(
+  import.meta.glob('/Workplaces & Retail/Shivam Exports/**/*.{jpg,jpeg,png,webp}', {
+    eager: true,
+    as: 'url',
+  }),
+);
+const workplacesEntries = [...workplacesOfficeEntries, ...workplacesShivamEntries].sort((a, b) =>
+  a.path.localeCompare(b.path),
 );
 
 const categoryConfigs = [
@@ -76,12 +92,11 @@ const categoryConfigs = [
 
 const buildTiles = (config) => {
   const allEntries = config.entries;
-  const entries = allEntries.slice(0, MAX_IMAGES_PER_CATEGORY);
-  return entries.map((entry, index) => {
+  return allEntries.map((entry, index) => {
     const subfolder = getSubfolder(entry.path) || config.key;
     const label = `${subfolder} ${index + 1}`;
     return {
-      id: slugify(`${config.key}-${subfolder}-${index + 1}`),
+      id: slugify(entry.path),
       label,
       url: entry.url,
       description: config.description,
@@ -98,7 +113,8 @@ const buildTiles = (config) => {
   });
 };
 
-export const featureTiles = categoryConfigs.flatMap(buildTiles);
+const allTiles = categoryConfigs.flatMap(buildTiles);
+export const featureTiles = shuffleEntries(allTiles);
 
 export const projectImages = [
   {

@@ -17,9 +17,9 @@ function Footer() {
             />
           </Link>
         </div>
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-3 sm:space-y-4 col-span-2 sm:col-span-1">
           <h4 className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#4f7975]">Navigation</h4>
-          <nav className="flex flex-wrap gap-x-4 gap-y-2 text-xs sm:text-sm text-[#1c4a46]">
+          <nav className="flex flex-nowrap gap-x-4 text-xs sm:text-sm text-[#1c4a46]">
             <Link to="/about" className="hover:text-[#45818E] transition-colors">
               About
             </Link>
@@ -37,7 +37,7 @@ function Footer() {
             </Link>
           </nav>
         </div>
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-3 sm:space-y-4 col-span-2 sm:col-span-1">
           <h4 className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#4f7975]">Follow</h4>
           <div className="flex gap-3 text-[#1c4a46]">
             <a href="https://www.instagram.com/co_de.studio/" target="_blank" rel="noopener noreferrer" className="text-[#E1306C] hover:opacity-80 transition-opacity" aria-label="Instagram">
