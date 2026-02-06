@@ -29,6 +29,82 @@ const getAdditionalImages = (entries, index, count = 3) => {
   return images;
 };
 
+const projectOverrides = {
+  Ramada: {
+    label: 'Floating Cloud, Kasauli',
+    description:
+      "Perched in the hills of Kasauli, this 80 key 5-star property is conceived as a contextual, thoughtful retreat that gently revives the town's colonial roots with eclectic accessories adding personality without visual noise. Light and airy, it relies on soft, muted tones and natural textures to create a calm, experiential environment that feels both familiar and distinctly of its place. A quiet narrative of the Kasauli wildflower motif runs through the guest rooms with etchings on wood veneer revealing themselves gently as guests move through the space. An inviting lounging corner oriented toward the view becomes the perfect nook to snuggle in with a book, anchored by a warm rug and complemented by an ottoman for added comfort. Functionality is seamlessly integrated: well-appointed storage with a sliding full-height mirror and luggage rack, a hygienic quartz countertop with durable laminates, and a flexible round table paired with a swivel chair and tiltable lights. Artwork inspired by Himachali weaving patterns completes the layered, place-sensitive experience.",
+    details: {
+      location: 'Kasauli, Haryana',
+      scope: 'Interiors',
+      type: 'Hospitality',
+      subtype: 'Hotel',
+      area: '125,000 sq ft',
+      status: 'Ongoing',
+    },
+  },
+  'Shivam Exports': {
+    label: 'The Woven Loft',
+    description:
+      'Designed as an immersive lifestyle destination, this textile centre reimagines the traditional showroom experience. Crafted to meet international trade standards, the space invites B2B visitors to explore, touch, and connect with the collection in a warm, inspiring environment. Flowing forms, sculptural lighting, and soft seating create a tactile, gallery-like atmosphere that blends hospitality with retail sensibility. Intuitive pathways guide visitors through dynamic display zones, encouraging discovery at their own pace. Earthy materials and warm tones lend a human touch, transforming the space into a memorable design experience that engages the senses and celebrates the beauty of textiles.',
+    details: {
+      location: 'Panipat, Haryana',
+      scope: 'Interiors',
+      type: 'Commercial',
+      subtype: 'Office and display',
+      area: '14,500 sq ft',
+      status: 'Ongoing',
+    },
+  },
+  'Office @ 43': {
+    label: 'Office @ 43',
+    description:
+      "Situated in Panipat, the textile hub of India, this 15,000 sq. ft. head office for a leading textile manufacturer and exporter spans three floors, housing the board of directors and all teams essential to the company's operations. The design embodies understated luxury with a hint of fun through a minimal aesthetic and richly textured materials. A subdued palette, layered with tactile finishes and warm wood tones, creates a refined yet inviting environment, striking a thoughtful balance between the client's vibrant personality and the studio's calm, contemporary design language.",
+    details: {
+      location: 'Panipat, Haryana',
+      scope: 'Architecture + Interiors + Landscape',
+      type: 'Commercial',
+      subtype: 'Office and display',
+      area: '15,000 sq ft',
+      status: 'Complete',
+    },
+  },
+  'Saraswati Sadan': {
+    label: 'Saraswati Sadan',
+    description:
+      'Conceived as twin residences for two brothers, this project beautifully interprets the idea of individuality within togetherness. Though designed as separate units, the homes share a cohesive visual language that binds them as one to the outside world. Rooted in the brief - minimal, vibrant, and simple - the spaces balance clean, minimal forms with layered textures and moments of quiet vibrancy. The design embodies understated luxury, where tactile materials and warm woods offset a muted palette. Playful details speak to the owners\' personalities, while the overall calm aesthetic creates a sophisticated, contemporary haven for the families.',
+    details: {
+      location: 'Jind, Haryana',
+      scope: 'Interiors + Landscape',
+      type: 'Residential',
+      subtype: 'Bungalow',
+      area: '10,000 sq ft',
+      status: 'Complete',
+    },
+  },
+  'PP Showroom': {
+    label: 'PP Showroom',
+    details: {
+      location: 'Panipat, Haryana',
+      scope: 'Architecture + Interiors + Landscape',
+      type: 'Residential',
+      subtype: 'Display',
+      status: 'Complete',
+    },
+  },
+  'Metro 82': {
+    label: 'Metro 82',
+    details: {
+      location: 'Mohali, Punjab',
+      scope: 'Architecture + Interiors + Landscape',
+      type: 'Commercial',
+      subtype: 'Office and display',
+      area: '27,000 sq ft',
+      status: 'Ongoing',
+    },
+  },
+};
+
 const shuffleEntries = (entries) => {
   const shuffled = [...entries];
   for (let i = shuffled.length - 1; i > 0; i -= 1) {
@@ -94,12 +170,13 @@ const buildTiles = (config) => {
   const allEntries = config.entries;
   return allEntries.map((entry, index) => {
     const subfolder = getSubfolder(entry.path) || config.key;
-    const label = `${subfolder} ${index + 1}`;
+    const override = projectOverrides[subfolder];
+    const label = override?.label ?? subfolder;
     return {
       id: slugify(entry.path),
       label,
       url: entry.url,
-      description: config.description,
+      description: override?.description ?? config.description,
       additionalImages: getAdditionalImages(allEntries, index, 3),
       details: {
         location: 'India',
@@ -108,6 +185,7 @@ const buildTiles = (config) => {
         area: config.area,
         scope: config.scope,
         summary: config.summary,
+        ...(override?.details ?? {}),
       },
     };
   });

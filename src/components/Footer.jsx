@@ -7,7 +7,7 @@ function Footer() {
 
   return (
     <footer className="border-t border-[#8dd8cf]/30 bg-white/50 px-4 sm:px-6 py-8 sm:py-12 md:px-20">
-      <div className="grid gap-6 sm:gap-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+      <div className="grid gap-6 sm:gap-8 grid-cols-2 sm:grid-cols-3">
         <div className="space-y-3 sm:space-y-4 col-span-2 sm:col-span-1">
           <Link to="/" className="inline-flex items-center pt-2 sm:pt-3">
             <img

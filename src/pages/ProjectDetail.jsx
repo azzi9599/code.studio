@@ -40,15 +40,31 @@ function ProjectDetail() {
         />
       </div>
 
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-8 sm:mb-10 grid gap-6 sm:gap-8 md:grid-cols-2">
+      <div className="mx-auto ">
+        <div className="mb-8 sm:mb-10 grid gap-6 sm:gap-8 md:items-start md:grid-cols-[20fr_80fr]">
           <div className="space-y-2 sm:space-y-3">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#0f2c2a]">{project.label}</h1>
           </div>
           <div className="space-y-4 sm:space-y-5">
-            <div className="space-y-3 text-base sm:text-lg text-[#1c4a46]">
+            <div className="space-y-3 text-base sm:text-lg text-[#1c4a46] leading-relaxed">
               <p>{project.description}</p>
               <p>{detail.summary}</p>
+            </div>
+            <div className="grid gap-3 text-xs sm:text-sm uppercase tracking-[0.2em] text-[#4f7975] sm:grid-cols-2 md:grid-cols-5">
+              {[
+                { label: 'Location', value: detail.location },
+                { label: 'Scope', value: detail.scope },
+                { label: 'Type', value: detail.type },
+                { label: 'Sub-type', value: detail.subtype },
+                { label: 'Area', value: detail.area },
+              ]
+                .filter((item) => item.value)
+                .map((item) => (
+                  <div key={item.label} className="space-y-1">
+                    <p>{item.label}</p>
+                    <p className="text-xs sm:text-sm normal-case tracking-normal text-[#1c4a46]">{item.value}</p>
+                  </div>
+                ))}
             </div>
           </div>
         </div>

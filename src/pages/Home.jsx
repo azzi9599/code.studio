@@ -58,9 +58,6 @@ function Home() {
       {/* About teaser below image grid */}
       <section className="px-4 sm:px-6 md:px-20 -mt-6 sm:-mt-8">
         <div className="mx-auto max-w-5xl space-y-4 sm:space-y-5 text-center">
-          <p className="text-sm sm:text-base uppercase tracking-[0.3em] text-[#4f7975]">
-            About
-          </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-[#0f2c2a]">
             About co-de.studio
           </h2>
@@ -80,7 +77,7 @@ function Home() {
         <div className="mx-auto max-w-5xl space-y-8 sm:space-y-10">
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {/* Kanika card */}
-            <div className="space-y-4 sm:space-y-5 flex flex-col bg-white/80 rounded-2xl p-4 sm:p-6 shadow-sm">
+            <div className="space-y-4 sm:space-y-5 flex flex-col items-center text-center bg-white/80 rounded-2xl p-4 sm:p-6 shadow-sm">
               <div className="aspect-[3/4] w-full max-w-[220px] sm:max-w-[260px] overflow-hidden bg-[#e4f7f4] rounded-xl">
                 <img
                   src={kanikaPhoto}
@@ -91,7 +88,7 @@ function Home() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#0f2c2a]">Kanika Garg</h3>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center gap-2">
                   <div className="h-px w-8 bg-[#4f7975]"></div>
                   <p className="text-xs sm:text-sm text-[#4f7975] font-light uppercase tracking-wider">FOUNDING PARTNER</p>
                   <div className="h-px w-8 bg-[#4f7975]"></div>
@@ -102,7 +99,7 @@ function Home() {
               </div>
             </div>
             {/* Nikhil card */}
-            <div className="space-y-4 sm:space-y-5 flex flex-col bg-white/80 rounded-2xl p-4 sm:p-6 shadow-sm">
+            <div className="space-y-4 sm:space-y-5 flex flex-col items-center text-center bg-white/80 rounded-2xl p-4 sm:p-6 shadow-sm">
               <div className="aspect-[3/4] w-full max-w-[220px] sm:max-w-[260px] overflow-hidden bg-[#e4f7f4] rounded-xl">
                 <img
                   src={nikhilPhoto}
@@ -113,7 +110,7 @@ function Home() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#0f2c2a]">Nikhil Sharma</h3>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center gap-2">
                   <div className="h-px w-8 bg-[#4f7975]"></div>
                   <p className="text-xs sm:text-sm text-[#4f7975] font-light uppercase tracking-wider">FOUNDING PARTNER</p>
                   <div className="h-px w-8 bg-[#4f7975]"></div>
@@ -128,7 +125,7 @@ function Home() {
             <button
               type="button"
               onClick={() => setShowTeam(true)}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-[0.2em] text-[#0f2c2a] border border-[#0f2c2a] px-5 py-2.5 rounded-full hover:bg-[#0f2c2a] hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-[0.2em] text-[#0f2c2a] border border-[#0f2c2a] px-5 py-2.5 hover:bg-[#0f2c2a] hover:text-white transition-colors"
             >
               Team
             </button>
@@ -169,13 +166,13 @@ function Home() {
 
       {/* Contact Section */}
       <section className="space-y-12 sm:space-y-16 px-4 sm:px-6 pb-12 sm:pb-20 md:px-20">
-        <header className="space-y-2 sm:space-y-3">
+        <header className="space-y-2 sm:space-y-3 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#0f2c2a]">Get in touch</h1>
           
         </header>
 
         <div className="space-y-4 sm:space-y-6">
-          <form className="w-full max-w-lg space-y-4">
+          <form className="mx-auto w-full max-w-[80%] space-y-4 pb-[15%]">
             <input
               type="text"
               placeholder="Name"
@@ -193,13 +190,13 @@ function Home() {
             ></textarea>
             <button
               type="button"
-              className="mt-6 sm:mt-8 w-full sm:w-auto border border-[#0f2c2a] bg-transparent px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm uppercase tracking-[0.3em] text-[#0f2c2a] transition hover:bg-[#0f2c2a] hover:text-white"
+              className="mt-6 sm:mt-8 block mx-auto w-full sm:w-auto border border-[#0f2c2a] bg-transparent px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm uppercase tracking-[0.3em] text-[#0f2c2a] transition hover:bg-[#0f2c2a] hover:text-white"
             >
               Send
             </button>
           </form>
 
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
+          <div className="grid gap-6 sm:gap-06 md:grid-cols-2">
             <div className="h-[250px] sm:h-[300px] w-full overflow-hidden rounded-lg">
               <iframe
                 src="https://www.google.com/maps?q=Emaar+Emerald+Plaza+Sector+65+Gurugram+122018&output=embed"
@@ -213,7 +210,7 @@ function Home() {
                 title="Location Map"
               ></iframe>
             </div>
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-3 sm:space-y-4 pl-8 sm:pl-12">
               <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-[#4f7975]">Contact information</p>
               <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-[#0f2c2a]">
                 <p>hello@co-de.studio</p>
